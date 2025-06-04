@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import jobRoutes from './routes/jobs.js';
 import categoryRoutes from './routes/categories.js';
 import countryRoutes from './routes/countries.js';
+import contactRoutes from './routes/contactRoutes.js';
+
 
 dotenv.config();
 
@@ -36,6 +38,8 @@ const connectDB = async () => {
     app.use('/api/jobs', jobRoutes);
     app.use('/api/categories', categoryRoutes);
     app.use('/api/countries', countryRoutes);
+    app.use('/api', contactRoutes);
+   
 
   } catch (error) {
     console.error('❌ MongoDB Connection Error:', error.message);
@@ -50,6 +54,7 @@ connectDB();
 app.use('/api/jobs', jobRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/countries', countryRoutes);
+app.use('/api', contactRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
